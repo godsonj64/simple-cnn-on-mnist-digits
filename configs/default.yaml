@@ -1,0 +1,30 @@
+seed: 42
+
+data:
+  root: data
+  train_dir: train
+  val_dir: val
+  image_size: 224
+  grayscale_to_rgb: true
+  num_workers: 4
+
+model:
+  name: efficientnet_b0   # options: efficientnet_b0 | small_cnn
+  num_classes: 10
+  pretrained: true
+
+train:
+  epochs: 20
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  device: auto            # auto | cuda | cpu
+
+output:
+  dir: outputs
+  best_checkpoint: best.pt
+
+export:
+  onnx_path: outputs/model.onnx
+  torchscript_path: outputs/model.ts
+  opset: 13
